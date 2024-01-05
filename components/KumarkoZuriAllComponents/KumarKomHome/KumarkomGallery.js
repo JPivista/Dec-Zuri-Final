@@ -4,7 +4,7 @@ import { Col, Container, Image } from 'react-bootstrap'
 // import { PhotoAlbum } from 'react-photo-album'
 // import { Gallery } from 'react-grid-gallery'
 
-import Gallery from 'react-photo-gallery'
+// import Gallery from 'react-photo-gallery'
 
 
 const KumarkomGallery = () => {
@@ -74,11 +74,11 @@ const KumarkomGallery = () => {
                     <h6 className='py-2'>GALLERY</h6>
                 </Col>
 
-                <Gallery
+                {/* <Gallery
                     onClick
                     columns={2}
                     photos={GalleryImages}
-                />
+                /> */}
 
 
                 <Col className='d-flex flex-column align-items-center py-4'>
