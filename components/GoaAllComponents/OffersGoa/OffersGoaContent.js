@@ -130,7 +130,7 @@ const OffersGoaContent = () => {
                     </p>
 
                     <Col className='d-flex justify-content-center mt-2'>
-                        <Link href="/beach-resorts-in-goa/offers/winter-getaway-package-on-ap/"
+                        <Link href="/beach-resorts-in-goa/offers/winter-getaway-package-on-map/"
                             className='bg-black text-center text-decoration-none btn-circle'
                         >
                             <p

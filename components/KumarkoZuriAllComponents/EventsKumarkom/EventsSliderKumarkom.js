@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Col, Container, Image } from 'react-bootstrap'
 import Carousel from 'react-multi-carousel';
 
+
 const EventsSliderKumarkom = () => {
     const responsive = {
         desktop: {
@@ -66,7 +67,7 @@ const EventsSliderKumarkom = () => {
                 <Col className=''>
                     <Image src='/cl.png' alt='' fluid />
                     <h6 className='py-2 pt-4 text-center'>BEST EVENT VENUE IN KUMARAKOM</h6>
-                    <p>
+                    <p className='p-2  p-lg-0'>
                         Nestled on the serene backwaters of Kerala, the Zuri Kumarakom is the ideal destination for events or weddings. Say your vows against a magical backdrop of lush greenery, calm flowing waters and make memories that you will treasure forever. Meetings in our magical venue offers the perfect mix of business and pleasure. With access to every modern amenity like high-speed internet and the beautiful surroundings, you are
                         certain to impress.
                     </p>

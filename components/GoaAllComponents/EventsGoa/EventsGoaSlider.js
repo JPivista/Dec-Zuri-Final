@@ -109,7 +109,7 @@ const EventsGoaSlider = () => {
 
 
             {/* Mobile View */}
-            <Container className='d-flex d-md-none'>
+            <Container className='d-sm-flex d-md-none'>
                 <Carousel
                     responsive={responsive}
                     removeArrowOnDeviceType={["tablet", "desktop"]}

@@ -1,188 +1,154 @@
 'use client'
-import React, { useState } from 'react'
-import { Container } from 'react-bootstrap';
+
+import { useState } from 'react';
+import axios from 'axios';
+import { Col, Row, Container } from 'react-bootstrap'
+import { RotatingLines } from 'react-loader-spinner'
+
+import configData from '../../config'
 
 const ContactForm = () => {
+    const [post, setPost] = useState(null);
+    const [yourName, setName] = useState(null);
+    const [yourEmail, setEmail] = useState(null);
+    const [yourSubject, setSubject] = useState(null);
+    const [yourMessage, setMessage] = useState(null);
+    const [spinner, setSpinner] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [disable, setDisabled] = useState(false);
+    const [errrname, setErrName] = useState(null);
+    const [errremail, setErrEmail] = useState(null);
+    const [errrsubject, setErrSubject] = useState(null);
+    const [success, setSuccess] = useState(true);
+    const [error, setError] = useState(false);
 
+    const siteUrl = configData.apiUrl;
 
-    const [formData, setFormData] = useState({
-        feedback: '',
-        'your-name': '',
-        'your-email': '',
-        phone: '',
-        country: '',
-        locations: '',
-        subject: '',
-        'directed-to': 'Marketing', // Default value for radio button
-    });
-
-    // Handle form field changes
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+    const handleSubmit = event => {
+        // 👇️ prevent page refresh
+        event.preventDefault();
     };
 
-    // Handle form submission
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    function createPost() {
+        setSpinner(true);
+        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7333/feedback`,
+            {
+                'your-name': { yourName },
+                'your-email': { yourEmail },
+                'your-subject': { yourSubject },
+                'your-message': { yourMessage },
+            }, {
+            headers: {
+                "Content-Type": 'multipart/form-data',
+            }
+        })
+            .then((response) => {
+                setPost(response.data.message);
+                // setErrMessage(response.data['invalid_fields'][1]['message']);
+                const msg = response.data.status;
+                if (msg == 'mail_sent') {
+                    setLoading(true);
+                    setSpinner(false);
+                    setSuccess(false);
+                    setError(false);
 
-        // Client-side validation
-        if (!formData['your-name'] || !formData['your-email']) {
-            // Handle validation error, e.g., show an error message to the user
-            console.error('Name and Email are required.');
-            return;
-        }
-
-        try {
-            // Use the WordPress REST API endpoint to handle form submissions
-            const response = await fetch('https://beta.thezurihotels.com/wp-json/contact-form-7/v1/contact-forms/7311/feedback', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                }
+                else {
+                    // setErrName(response.data['invalid_fields'][0]['message']);
+                    // setErrEmail(response.data['invalid_fields'][1]['message']);
+                    //setErrSubject(response.data['invalid_fields'][2]['message']);
+                    setSpinner(false);
+                    //setLoading(true);
+                    setError(true);
+                }
+                console.log(response.data)
             });
-
-            if (!response.ok) {
-                // Handle HTTP error status
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            // Check if the submission was successful
-            if (data.status === 'mail_sent') {
-                // Handle success, e.g., show a success message to the user
-                console.log('Form submitted successfully:', data);
-            } else {
-                // Handle submission error, e.g., show an error message to the user
-                console.error('Error submitting form:', data.message);
-            }
-        } catch (error) {
-            // Handle other errors, e.g., show an error message to the user
-            console.error('Error submitting form:', error.message);
-        }
-    };
-
+    }
 
     return (
-        <>
-            <Container>
-                <form
-                    className="wordpress-form"
-                    onSubmit={handleSubmit}
-                >
+        <Container className='p-0 py-5'>
 
+            <Row className='d-flex flex-md-row flex-column'>
+                <Col className='' md={7}>
 
-                    <input
-                        type="text"
-                        name="your-name"
-                        className="form-control"
-                        placeholder="Name"
-                        value={formData['your-name']}
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        type="email"
-                        name="your-email"
-                        className="form-control"
-                        placeholder="Your Email"
-                        value={formData['your-email']}
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        type="tel"
-                        name="phone"
-                        className="form-control"
-                        minLength="10"
-                        maxLength="10"
-                        placeholder="Phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                    />
-
-                    {/* Country Select */}
-                    <select
-                        name="country"
-                        className="form-control"
-                        value={formData['country']}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select a country</option>
-                        <option value="USA">USA</option>
-                        <option value="Canada">Canada</option>
-                        <option value="UK">UK</option>
-                        <option value="Australia">Australia</option>
-                    </select>
-
-                    {/* Locations Select */}
-                    <select
-                        name="locations"
-                        className="form-control"
-                        value={formData['locations']}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select a hotel</option>
-                        <option value="The Zuri Whitefield, Bengaluru">The Zuri Whitefield, Bengaluru</option>
-                        <option value="The Zuri White Sands, Goa Resort & Casino">The Zuri White Sands, Goa Resort & Casino</option>
-                        <option value="The Zuri Kumarakom, Kerala">The Zuri Kumarakom, Kerala</option>
-                    </select>
-
-                    <input
-                        type="text"
-                        name="subject"
-                        className="form-control"
-                        placeholder="Subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                    />
-
-                    <textarea
-                        name="feedback"
-                        className="form-control feedback-textarea"
-                        placeholder="Feedback/Question"
-                        value={formData.feedback}
-                        onChange={handleChange}
-                    >
-
-                    </textarea>
-
-                    {/* DIRECTED TO Radio Buttons */}
-                    <label>DIRECTED TO</label>
-                    <div>
-                        {['Marketing', 'Business', 'Development', 'Events', 'HR', 'Relations', 'Other'].map((option) => (
-                            <div key={option} className="form-check form-check-inline">
+                    {success &&
+                        <form
+                            onSubmit={handleSubmit}
+                            style={{ margin: '20px' }}>
+                            <h4 id='' className='pt-3'>
+                                Hi! I am
+                            </h4>
+                            <Col>
                                 <input
-                                    type="radio"
-                                    id={`directed-to-${option}`}
-                                    name="directed-to"
-                                    className="form-check-input"
-                                    value={option}
-                                    checked={formData['directed-to'] === option}
-                                    onChange={handleChange}
+                                    //required
+                                    type='text'
+                                    className="form-control border-top-0 border-start-0 border-end-0 rounded-0 border-3"
+                                    id="yourName"
+                                    name='yourName'
+                                    placeholder="eg. Sandy"
+                                    value={yourName}
+                                    onChange={event => setName(event.target.value)}
                                 />
-                                <label htmlFor={`directed-to-${option}`} className="form-check-label">
-                                    {option}
-                                </label>
-                            </div>
-                        ))}
-                    </div>
+                                <span className="r_error">{errrname}</span>
+                            </Col>
 
-                    {/* Add a loading state while submitting */}
-                    <button type="submit" className="feedback-btn btn-md form-control">
-                        {/* Conditional rendering for loading state */}
-                        { /* Example: isLoading ? 'Submitting...' : 'Submit' */}
-                        Submit
-                    </button>
+                            <Col>
+                                <h4 className='pt-3'>Reach Me At</h4>
 
-                </form>
-            </Container>
-        </>
+                                <input
+                                    //required
+                                    type='email'
+                                    className="form-control border-top-0 border-start-0 border-end-0 rounded-0 border-3"
+                                    id="yourEmail"
+                                    name='yourEmail'
+                                    placeholder="eg. test@test.com"
+                                    value={yourEmail}
+                                    onChange={event => setEmail(event.target.value)}
+                                />
+                                <span className="r_error">{errremail}</span>
+                            </Col>
 
+                            <Col>
+                                <h4 className='pt-3'>City</h4>
+
+                                <input
+                                    type='text'
+                                    className="form-control border-top-0 border-start-0 border-end-0 rounded-0 border-3"
+                                    id="yourSubject"
+                                    name='yourSubject'
+                                    placeholder="eg. Bengaluru"
+                                    value={yourSubject}
+                                    onChange={event => setSubject(event.target.value)}
+                                />
+                                <span className="r_error">{errrsubject}</span>
+                            </Col>
+
+                            <Col>
+                                <h4 className='pt-3'>My Message</h4>
+                                <textarea
+                                    //required
+                                    rows="4"
+                                    cols="50"
+                                    className="form-control border-top-0 border-start-0 border-end-0 rounded-0 border-3"
+                                    id="yourMessage"
+                                    name='yourMessage'
+                                    placeholder=" Message"
+                                    value={yourMessage}
+                                    onChange={event => setMessage(event.target.value)}
+                                />
+                            </Col>
+                            {spinner && <div className="spinner-border text-light" role="status" />}
+
+                            <button type='submit' className='btn btn-primary register ' onClick={createPost}>Submit</button>
+                        </form>
+                    }
+
+                    {loading && <h1 class="reg-success mt-4">{post}</h1>}
+                    {error && <h1 class="reg-error mt-4">{post}</h1>}
+                </Col>
+            </Row>
+        </Container >
     );
 };
 
-
-export default ContactForm
+export default ContactForm;

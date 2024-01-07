@@ -5,6 +5,7 @@ import Footer from '../../components/Shared/Footer'
 import ContactUsBanner from './ContactUsBanner'
 import ContactUsTap from './ContactUsTap'
 import ContactForm from './ContactForm'
+import ContactWordpressFeedbackForm from './ContactWordpressFeedbackForm'
 
 const index = () => {
     return (
@@ -12,7 +13,8 @@ const index = () => {
             <Header />
             <ContactUsBanner />
             <ContactUsTap />
-            <ContactForm />
+            {/* <ContactForm /> */}
+            <ContactWordpressFeedbackForm />
             <Footer />
         </>
     )

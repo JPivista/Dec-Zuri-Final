@@ -39,8 +39,9 @@ const AboutBengaluruContent = () => {
                     <h4 className=''>WHAT NOT TO MISS AT BENGALURU</h4>
 
                     <Col className='position-relative'>
-                        <span className='underline'></span>
-                        <span className='down-arrow'></span>
+                        <div className='underline'>
+                            <span className='down-arrow'></span>
+                        </div>
                     </Col>
 
                 </Col>
@@ -109,8 +110,9 @@ const AboutBengaluruContent = () => {
                     <Col className='p-0 py-5'>
                         <h4 className='p-0'>EVENTS</h4>
                         <Col className='position-relative'>
-                            <span className='underline'></span>
-                            <span className='down-arrow'></span>
+                            <div className='underline'>
+                                <span className='down-arrow'></span>
+                            </div>
                         </Col>
                     </Col>
 
@@ -169,7 +171,15 @@ const AboutBengaluruContent = () => {
 
             <Container className='p-2 d-flex flex-column d-md-none'>
 
-                <h4 className='my-5 pb-3 border border-2 border-top-0 border-end-0 border-start-0 d-inline-block'>WHAT NOT TO MISS AT BENGALURU</h4>
+                <h4
+                    className='my-5 pb-3 border border-2 border-top-0 border-end-0 border-start-0 d-inline-block'>
+                    WHAT NOT TO MISS AT BENGALURU
+                </h4>
+                <Col className='position-relative'>
+                    <div className='underline'>
+                        <span className='down-arrow'></span>
+                    </div>
+                </Col>
 
                 <Col className='p-2'>
                     <Col className='d-flex flex-column justify-content-center align-items-center text-center'>

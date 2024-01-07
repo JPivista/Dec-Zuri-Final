@@ -13,7 +13,7 @@ const ContactUsBanner = () => {
     return (
         <>
             <Container fluid>
-                <Container className='p-0 pt-md-5 custom-kumarkom-menu-container'>
+                <Container className='custom-kumarkom-menu-container'>
                     <h3 className='text-center py-md-4 text-custom-grey'>CONTACT US</h3>
 
                     <Col style={BannerImg}>

@@ -5,6 +5,12 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+
+p  {
+    color: #6d6e71;
+    font-size: 14px;
+}
+
 .container {
     width: 1170px !important;
 }
@@ -15,6 +21,10 @@ p {
 
 .purple-clr{
     color: #c06da2 !important;
+}
+
+.bg-purple {
+    background: #c06da2;
 }
 
 .custom-kumarkom-menu-container {
@@ -68,6 +78,9 @@ p {
     font-size: 18px;
 }
 
+.bg-purple{
+    background: purple;
+  }
 
 .text-custom-grey {
     color: #6d6e71;
@@ -535,9 +548,146 @@ input#checkIn, input#checkOut {
   }
 
 
+
+
   @media(max-width:767px) {
     .custom-home-slider-text {
         font-size: 28px !important;
       }
   }
-  
+
+
+
+
+/* Form Fils */
+.r_error {
+    color: red; 
+    font-size: 14px;
+}
+
+.radio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the value as needed for the desired gap */
+}
+
+.radio-option {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 20px;
+        font-size: 14px;
+        color: #6d6e71;
+}
+
+input#marketing 
+    {
+margin-right: 4px;
+}
+
+input#business
+{
+    margin-right: 4px;
+}
+
+input#development{
+    margin-right: 4px;
+}
+input#events{
+    margin-right: 4px;
+}
+input#hr{
+    margin-right: 4px;
+}
+input#relations{
+    margin-right: 4px;
+}
+input#other{
+    margin-right: 4px;
+}
+
+input::placeholder {
+    font-size: 14px; 
+}
+
+textarea::placeholder {
+    font-size: 14px; 
+}
+
+/* For select box */
+select#yourPlace {
+    font-size: 14px; 
+}
+/* For select box */
+select#yourCountry {
+    font-size: 14px; 
+}
+
+
+
+  /* wordpress page content css */
+
+  h2.text-center.sectionheading.underline-offer {
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+h1.text-center.sectionheading.underline-offer {
+    text-decoration: underline;
+    padding-bottom: 20px;
+}
+
+
+th {
+    font-size: 14px;
+    text-align: center !important;
+}
+
+td {
+    font-size: 14px;
+    text-align: center;
+}
+
+ul.features-list-offer {
+    margin-bottom: 24px;
+}
+
+li,
+th,
+td,
+.spadehead5 {
+    color: #6d6e71 !important;
+    font-size: 14px;
+}
+
+.sectionheading {
+    color: #000;
+    font-size: 16px;
+} 
+
+.spadetails {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+ul.features-list-offer {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+
+.spadehead5 {
+    color: #6d6e71 !important;
+    font-size: 14px;
+    text-align: left;
+}
+
+.calltoavail {
+    font-size: 16px !important;
+    text-align: left;
+}
+
+.custom-email {
+    color: black !important;
+    text-decoration: none;
+}
