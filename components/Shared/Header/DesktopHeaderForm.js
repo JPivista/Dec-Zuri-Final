@@ -43,18 +43,18 @@ const DesktopHeaderForm = ({ onClose }) => {
 
         const handleMakeReservation = () => {
             if (onClose) {
-                onClose(); // Call the onClose callback passed from the parent
+                onClose();
             }
         };
 
         return (
-            <Container className={`pt-3 pb-5 ms-5 desktop-header-form ${isMakeReservation ? '' : 'hidden'} d-md-flex d-none`}
-                onClick={handleMakeReservation}
+            <Container
+                className={`pt-3 pb-5 ms-5 desktop-header-form ${isMakeReservation ? '' : 'hidden'}`}
             >
 
                 <Col
                     className='custom-close-btn'
-
+                    onClick={handleMakeReservation}
                 >
                     <p className='mb-0'>
                         close

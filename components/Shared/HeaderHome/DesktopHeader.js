@@ -24,8 +24,6 @@ const DesktopHeader = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
-
-            // You can adjust the threshold based on when you want the container to start hiding
             const threshold = 100;
 
             setIsHidden(scrollY > threshold);
@@ -320,7 +318,8 @@ const DesktopHeader = () => {
 
                 {isMakeReservation && (
                     <Container fluid className={`header-container ${isHidden ? 'hidden' : ''}`} style={{ zIndex: '0' }}>
-                        <Container className='z-1 p-0'>
+                        {/* // <Container fluid > */}
+                        <Container className='p-0'>
                             <DesktopHeaderForm onClose={handleFormClose} />
                         </Container>
                     </Container>

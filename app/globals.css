@@ -70,6 +70,10 @@ p {
     font-size: 14px !important;
 }
 
+.font15px {
+    font-size: 15px !important;
+}
+
 .font16px {
     font-size: 16px !important;
 }
@@ -78,9 +82,17 @@ p {
     font-size: 18px;
 }
 
+.font19px {
+    font-size: 19px !important;
+}
+
 .bg-purple{
-    background: purple;
-  }
+    background: #a4508e;
+}
+
+.text-purple{
+color: #913065;
+}
 
 .text-custom-grey {
     color: #6d6e71;
@@ -321,8 +333,8 @@ input#checkIn, input#checkOut {
 .header-container {
     transition: transform 0.7s ease-in-out;
     z-index:0 !important;
-    position: absolute;
-    margin-top: 100px !important;
+    /* position: absolute; */
+    /* margin-top: 100px !important; */
     background: white;
     padding: 0px !important;
     left: 0px;
@@ -674,6 +686,15 @@ input#eventEndDate {
     border-radius: 5px;
 }
 
+
+.post-content {
+    max-height: 4 * 1.2em; /* 4 lines * line-height */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
 
 
 
