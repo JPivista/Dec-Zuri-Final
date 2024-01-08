@@ -21,7 +21,7 @@ const ContactUsBanner = () => {
                     <Col className='d-flex flex-row flex-wrap p-0 align-items-center' >
                         <Link href="/"
                             className='text-decoration-none text-black m-0'>
-                            <h6 className='mb-0 banner-breadcrumbs'>Home</h6>
+                            <h6 className='mb-0 font12px'>Home</h6>
                         </Link>
                     </Col>
                 </Container>

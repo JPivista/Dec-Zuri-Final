@@ -31,52 +31,51 @@ const ContactUsTap = () => {
     return (
         <>
             <Container className='py-5'>
-                <Row lg={5} className='d-flex flex-lg-row flex-column justify-content-center'>
-                    <Col onClick={handleOnclikEvent}
+                <div className='d-flex flex-lg-row flex-column gap-lg-4 justify-content-center'>
+                    <div onClick={handleOnclikEvent}
                         className='text-center'
-                        lg={2}
                     >
-                        <p className='pb-3 text-center'
+                        <p className='pb-2 text-center font12px'
                             style={{
-                                borderBottom: isOnclickShow ? '2px solid black' : '0px',
-                                color: isOnclickShow ? '#c06da2' : 'black'
+                                borderBottom: isOnclickShow ? '2px solid #8b3f88' : '0px',
+                                color: isOnclickShow ? '#8b3f88' : 'black'
                             }}
                         >
                             PHYSICAL ADDRESS
                         </p>
-                    </Col>
+                    </div>
 
-                    <Col
+                    <div
                         onClick={handleOnclikEvent1}
                         className='text-center'
-                        lg={2}
+
                     >
-                        <p className='pb-3 text-center'
+                        <p className='pb-2 text-center font12px'
                             style={{
-                                borderBottom: isOnclickShow1 ? '2px solid black' : '0px',
-                                color: isOnclickShow1 ? 'orange' : 'black'
+                                borderBottom: isOnclickShow1 ? '2px solid #8b3f88' : '0px',
+                                color: isOnclickShow1 ? '#8b3f88' : 'black'
                             }}
                         >
                             SALES ADDRESS
                         </p>
-                    </Col>
+                    </div>
 
-                    <Col
+                    <div
                         onClick={handleOnclikEvent2}
                         className='text-center'
-                        lg={2}
+
                     >
-                        <p className='pb-3 text-center'
+                        <p className='pb-2 text-center font12px'
                             style={{
-                                borderBottom: isOnclickShow2 ? '2px solid black' : '0px',
-                                color: isOnclickShow2 ? 'orange' : 'black'
+                                borderBottom: isOnclickShow2 ? '2px solid #8b3f88' : '0px',
+                                color: isOnclickShow2 ? '#8b3f88' : 'black'
                             }}
                         >
 
                             FEEDBACK
                         </p>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
 
                 {isOnclickShow && (
                     <Col className='mt-4'>
@@ -293,7 +292,7 @@ const ContactUsTap = () => {
                     </Col>
                 )}
                 {isOnclickShow2 && (
-                    <Col>
+                    <Col className='mt-4'>
                         <Col>
                             <Row>
                                 <Col className='text-center'>

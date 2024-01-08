@@ -123,15 +123,18 @@ const Footer = () => {
                                     The Zuri Whitefield, Bengaluru
                                 </Link>
                             </li>
-                            <li className='pt-3'>
-                                <Link href="https://preferredhotels.com/hotels/india/zuri-whitefield-bengaluru"
+                            <div className='pt-3'>
+                                <Link href="https://iprefer.com/members/signup?enrollcode=BLRTZ&hotel=BLRTZ"
                                     className='text-black text-decoration-none'
                                     target='_blank'
                                 >
-                                    <Image src="/footer/iprefer_logo_comp.jpg" alt="" />
+                                    <Image src="/footer/i_prefer_logo_new.jpg"
+                                        alt=""
+                                        width={115}
+                                    />
 
                                 </Link>
-                            </li>
+                            </div>
                         </ul>
                     </Col>
                     <Col md={3}>

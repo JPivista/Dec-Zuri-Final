@@ -1,7 +1,7 @@
 'use client'// 'use client' import and other imports...
 
 import React, { useState, useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 import DomainUrl from '../../config';
 import '../../app/globals.css';
 import BlogPostsByCategory from './ BlogPostsByCategory';  // Import the new component
@@ -101,7 +101,7 @@ const BlogContentWordpress = () => {
                                 {allPosts.map(post => (
                                     <li key={post.id}>{post.title.rendered}
 
-                                        <img
+                                        <Image
                                             src={post.acf?.image_for_post}
                                             alt={post.title.rendered}
                                         />
