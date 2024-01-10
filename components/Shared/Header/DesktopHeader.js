@@ -102,7 +102,7 @@ const DesktopHeader = () => {
                             </Col>
 
                             <Col className='d-flex flex-row pb-3'>
-                                <Col className='d-flex flex-column align-items-center justify-content-center'>
+                                <Col className='d-flex flex-column align-items-center justify-content-center '>
                                     <div className='d-flex flex-row'>
                                         <div>
                                             <div className='px-4 py-4 after-header hover-to-show'>

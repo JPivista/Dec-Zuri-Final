@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { useRouter } from 'next/navigation';
 
 const DesktopHeaderForm = ({ onClose }) => {
 
+    const router = useRouter();
     const hotels = [
-        { id: 1, name: 'The Zuri Kumarakom, Kerala Resort & Spa' },
-        { id: 2, name: 'The Zuri White Sands, Goa Resort & Casino' },
-        { id: 3, name: 'The Zuri Whitefield, Bengaluru' },
+        { id: 1, name: 'The Zuri Kumarakom, Kerala Resort & Spa', value: '64786' },
+        { id: 2, name: 'The Zuri White Sands, Goa Resort & Casino', value: '64787' },
+        { id: 3, name: 'The Zuri Whitefield, Bengaluru', value: '27305' },
     ];
 
     const HotelReservationForm = () => {
@@ -17,6 +19,10 @@ const DesktopHeaderForm = ({ onClose }) => {
         const [selectedRooms, setSelectedRooms] = useState(1);
         const [selectedAdults, setSelectedAdults] = useState(1);
         const [selectedChildren, setSelectedChildren] = useState(0);
+        const [selectedChain, setSelectedChain] = useState('');
+
+
+
 
         const handleFormSubmit = (e) => {
             e.preventDefault();
@@ -28,7 +34,27 @@ const DesktopHeaderForm = ({ onClose }) => {
                 selectedRooms,
                 selectedAdults,
                 selectedChildren,
+                selectedChain,
             });
+
+            if (selectedHotel === '64786') {
+                setSelectedChain('17869')
+
+            }
+            if (selectedHotel === '64787') {
+                setSelectedChain('17869')
+            }
+            if (selectedHotel === '27305') {
+                setSelectedChain('10237')
+            }
+
+
+
+            // Construct the URL based on form data
+            const reservationURL = `https://be.synxis.com/?adult=${selectedAdults}&arrive=${selectedCheckInDate}&chain=${selectedChain}&child=${selectedChildren}&currency=INR&depart=${selectedCheckOutDate}&hotel=${selectedHotel}&level=hotel&locale=en-US&rooms=${selectedRooms}`;
+            console.log(reservationURL)
+            // Navigate to the reservation URL
+            router.push(reservationURL);
         };
 
         function getTodayDateString() {
@@ -87,7 +113,7 @@ const DesktopHeaderForm = ({ onClose }) => {
                                     >
                                         <option value="">Select a hotel</option>
                                         {hotels.map((hotel) => (
-                                            <option key={hotel.id} value={hotel.name}>
+                                            <option key={hotel.id} value={hotel.value}>
                                                 {hotel.name}
                                             </option>
                                         ))}
@@ -206,25 +232,7 @@ const DesktopHeaderForm = ({ onClose }) => {
 
                             <div className='d-flex flex-column gap-4'>
                                 <div className='text-center d-flex flex-column gap-2'>
-                                    <Link
-                                        href="https://be.synxis.com/?adult=1&arrive=2023-12-20&chain=17869&child=0&currency=INR&depart=2023-12-21&hotel=64787&level=hotel&locale=en-US&rooms=1"
-                                        className='text-decoration-none text-white px-2 py-2 d-inline-block'
-                                        style={{ background: 'purple' }}
-                                    >
-                                        BOOK NOW
-                                    </Link>
-
-                                    <Link
-                                        href="https://be.synxis.com/?_ga=2.164956023.936920120.1702967799-2038087003.1664255723&adult=1&arrive=2023-12-20&chain=17869&child=0&currency=INR&depart=2023-12-21&hotel=64786&level=hotel&locale=en-US&rooms=1&shell=GCF&start=searchres&template=GCF"
-                                        className="text-deocoration-black"
-                                        target='_blank'
-                                    >
-                                        <p
-                                            className='text-black font12px'
-                                        >
-                                            Modify / Cancel Reservation
-                                        </p>
-                                    </Link>
+                                    <Button onClick={handleFormSubmit}>Book Now</Button>
                                 </div>
                             </div>
                         </div>
