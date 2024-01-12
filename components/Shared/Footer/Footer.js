@@ -138,11 +138,57 @@ const Footer = () => {
                         </ul>
                     </Col>
                     <Col md={3}>
+                        <p className='text-center'>
+                            CONNECT WITH US
+                        </p>
+                        <Col className='d-flex flex-row gap-4 justify-content-center'>
+                            <Link
+                                href="https://www.facebook.com/thezurihotels"
+                                target='_blank'
+                                className='text-decoration-none text-black'
+                            >
+                                <Image src='/header/facebook_final.svg' alt='' />
+                            </Link>
+
+                            <Link
+                                href="https://twitter.com/zurihotels"
+                                target='_blank'
+                                className='text-decoration-none text-black'
+                            >
+                                <Image src='/header/twitter_final.svg' alt='' />
+                            </Link>
+
+                            <Link
+                                href="https://www.youtube.com/channel/UCXxjZ-f7LTEMchpvECctUKg?view_as=subscriber"
+                                target='_blank'
+                                className='text-decoration-none text-black'
+                            >
+                                <Image src='/header/youtube_final.svg' alt='' />
+                            </Link>
+
+                            <Link
+                                href="https://www.instagram.com/thezurihotels/"
+                                target='_blank'
+                                className='text-decoration-none text-black'
+                            >
+                                <Image src='/header/instafinal.svg' alt='' />
+                            </Link>
+
+                            <Link
+                                href="https://www.linkedin.com/company/the-zuri-hotels-&-resorts/"
+                                target='_blank'
+                                className='text-decoration-none text-black'
+                            >
+                                <Image src='/header/linked_in_final.svg' alt='' />
+                            </Link>
+                        </Col>
                     </Col>
                 </Row>
                 <hr />
-
-                E-brochures &gt; The Zuri Whitefield, Bengaluru / The Zuri Kumarakom, Kerala Resort & Spa / The Zuri White Sands, Goa Resort & Casino
+                <p>
+                    E-brochures &gt;
+                    <span className='text-black'> The Zuri Whitefield, Bengaluru / The Zuri Kumarakom, Kerala Resort & Spa / The Zuri White Sands, Goa Resort & Casino</span>
+                </p>
             </Container>
 
 

@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Image } from 'react-bootstrap'
 // import { PhotoAlbum } from 'react-photo-album'
 // import { Gallery } from 'react-grid-gallery'
@@ -9,63 +9,66 @@ import { Col, Container, Image } from 'react-bootstrap'
 
 const KumarkomGallery = () => {
 
-    const GalleryImages = [
+    const galleryItems = [
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_1.jpg',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_2.jpg',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_3.jpg',
-            width: 3,
-            height: 4
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_4.jpg',
-            width: 3,
-            height: 4
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_5.jpg',
-            width: 3,
-            height: 4
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_6.jpg',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_7.jpg',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_8.png',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_9.png',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_10.jpg',
-            width: 1,
-            height: 1
         },
         {
             src: '/kumarkom/kumarkom-home/Gallery/img_11.jpg',
-            width: 1,
-            height: 1
         },
     ]
+
+    const [lightboxIsOpen, setLightboxIsOpen] = useState(false);
+    const [currentImage, setCurrentImage] = useState(0);
+
+    const openLightbox = (index) => {
+        setCurrentImage(index);
+        setLightboxIsOpen(true);
+    };
+
+    const closeLightbox = () => {
+        setCurrentImage(0);
+        setLightboxIsOpen(false);
+    };
+
+    const goToPrevious = () => {
+        setCurrentImage((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
+    };
+
+    const goToNext = () => {
+        setCurrentImage((prev) => (prev + 1) % galleryItems.length);
+    };
+
+
+
+
     return (
         <>
             <Container className='p-0 py-5'>
@@ -73,12 +76,30 @@ const KumarkomGallery = () => {
                     <Image src='/cl.png' alt='' fluid />
                     <h6 className='py-2'>GALLERY</h6>
                 </Col>
-                {/* 
-                <Gallery
-                    onClick
-                    columns={2}
-                    photos={GalleryImages}
-                /> */}
+
+
+                <div className="masonry">
+                    {galleryItems.map((item, index) => (
+                        <div key={index} onClick={() => openLightbox(index)}>
+                            <Image src={item.src} alt={item.alt} />
+                        </div>
+                    ))}
+                </div>
+
+                {lightboxIsOpen && (
+                    <div className="lightbox" onClick={closeLightbox}>
+                        {/* <button className="lightbox-button" onClick={() => goToPrevious()}>
+                            &lt; Prev
+                        </button> */}
+                        <div className="lightbox-content">
+                            <Image src={galleryItems[currentImage].src} alt={galleryItems[currentImage].alt} />
+                        </div>
+                        {/* <button className="lightbox-button" onClick={() => goToNext()}>
+                            Next &gt;
+                        </button> */}
+                    </div>
+                )}
+
 
 
                 <Col className='d-flex flex-column align-items-center py-4'>
@@ -88,7 +109,7 @@ const KumarkomGallery = () => {
                 </Col>
 
 
-            </Container>
+            </Container >
         </>
     )
 }
