@@ -109,7 +109,7 @@ const Gallery = () => {
         <>
 
             {/* Desktop View */}
-            <Container className='p-0 py-5 d-md-flex flex-column d-none' style={{}}>
+            <Container className='p-0 py-5 d-md-flex flex-column d-none' >
                 <Col className='d-flex flex-column align-items-center'>
                     <Image src='/cl.png' alt='' fluid />
                     <h6 className='py-2'>GALLERY</h6>
@@ -127,7 +127,7 @@ const Gallery = () => {
                         }}
                     >
                         <span className='bg-opacity-25 bg-black position-absolute start-0 end-0 top-0 bottom-0'></span>
-                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' style={{}}>
+                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' >
                             <h6
                                 style={hoverTextStyleBlr}
                             >
@@ -158,7 +158,7 @@ const Gallery = () => {
                         }}
                     >
                         <span className='bg-opacity-25 bg-black position-absolute start-0 end-0 top-0 bottom-0'></span>
-                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' style={{}}>
+                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' >
                             <h6
                                 style={hoverTextStyleBlr1}
                             >
@@ -189,7 +189,7 @@ const Gallery = () => {
                         className='p-3 position-relative'
                     >
                         <span className='bg-opacity-25 bg-black position-absolute start-0 end-0 top-0 bottom-0'></span>
-                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' style={{}}>
+                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' >
                             <h6
                                 className='custom-home-gallery'
                                 style={hoverTextStyleBlr2}
@@ -215,7 +215,7 @@ const Gallery = () => {
 
 
             {/* Mobile View */}
-            <Container className='p-0 py-5 d-md-none flex-column d-flex' style={{}}>
+            <Container className='p-0 py-5 d-md-none flex-column d-flex' >
                 <Col className='d-flex flex-column align-items-center'>
                     <Image src='/cl.png' alt='' fluid />
                     <h6 className='py-2'>GALLERY</h6>
@@ -223,7 +223,7 @@ const Gallery = () => {
 
                 <div className="d-flex flex-lg-row flex-column" >
                     <div
-                        className='p-3 position-relative'
+                        className=' position-relative '
                         style={{
                             height: '200px',
                             backgroundImage: `url('/home/gallery_section/hover_img_1.jpg')`,
@@ -232,7 +232,7 @@ const Gallery = () => {
                         }}
                     >
                         {/* <span className='bg-opacity-25 bg-black position-absolute start-0 end-0 top-0 bottom-0'></span> */}
-                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' style={{}}>
+                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end bg-opacity-25 bg-black p-3' >
                             <h6
                                 className='text-white'
                             >
@@ -252,7 +252,7 @@ const Gallery = () => {
                         </div>
                     </div>
                     <div
-                        className='p-3 '
+                        className=''
                         style={{
                             height: '200px',
                             backgroundImage: `url('/home/gallery_section/hover_img_2.jpg')`,
@@ -261,9 +261,10 @@ const Gallery = () => {
                         }}
                     >
                         {/* <span className='bg-opacity-25 bg-black position-absolute start-0 end-0 top-0 bottom-0'></span> */}
-                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' style={{}}>
+                        <div
+                            className='h-100 position-relative d-flex flex-row justify-content-between align-items-end bg-opacity-25 bg-black p-3 border border-1 border-start-0 border-end-0  border-white'
+                        >
                             <h6
-                                style={{}}
                                 className='text-white'
                             >
                                 THE ZURI WHITE SANDS, GOA RESORT & CASINO
@@ -288,10 +289,10 @@ const Gallery = () => {
                             backgroundRepeat: 'no-repeat',
                             backgroundSize: 'cover',
                         }}
-                        className='p-3 position-relative'
+                        className='position-relative'
                     >
                         {/* <span className='bg-opacity-25 bg-black position-absolute start-0 end-0 top-0 bottom-0'></span> */}
-                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end' style={{}}>
+                        <div className='h-100 position-relative d-flex flex-row justify-content-between align-items-end bg-opacity-25 bg-black p-3' >
                             <h6
                                 className='custom-home-gallery text-white'
                             >

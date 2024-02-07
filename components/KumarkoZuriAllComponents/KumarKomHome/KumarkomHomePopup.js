@@ -3,45 +3,52 @@ import React, { useEffect, useState } from 'react'
 import { Col, Image, Modal } from 'react-bootstrap';
 
 const KumarkomHomePopup = () => {
-    const [showPopup, setShowPopup] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        // Set showPopup to true when the component mounts
-        setShowPopup(true);
+    const handleClick = () => {
+        setIsOpen(!isOpen);
+    };
+
+    // Close the component on page load
+    React.useEffect(() => {
+        setIsOpen(true);
     }, []);
 
-    const handleClose = () => {
-        setShowPopup(false);
-    }
-
     return (
-        <div>
+        <>
 
-            {/* <Col
-                className='position-absolute start-0 top-0 end-0 bottom-0 d-flex flex-column'
-                show={showPopup}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Col className='position-relative'>
+            {isOpen && (
+                <Col
+                    className='position-fixed start-0 top-0 end-0 bottom-0 d-flex flex-column z-3'
+                >
                     <Col
-                        className='position-absolute bg-black-50 top-50  bg-purple translate-middle start-50 p-4'
+                        className='position-relative'
                     >
-                        <p className='text-white'>
-                            Our Banquet hall & Kick-start Gym will be closed for maintenance from 10th January to 20th January 2024. Thank you for your understanding.
-                        </p>
-
-                        <div
-                            onClick={handleClose}
+                        <span
+                            className='position-absolute top-0 bottom-0 start-0 end-0 bg-black bg-opacity-50'
+                            onClick={handleClick}
                         >
-                            close
-                        </div>
-                    </Col>
+                        </span>
+                        <Col
+                            className='position-absolute translate-middle start-50 top-50'
+                        >
+                            <Image
+                                src="/popup/kumarkom-popup/zuri_kumarkom_appreciation_letter.jpeg"
+                                style={{ width: '100%', height: "90vh" }}
+                                alt=""
+                            />
+                            <span className='position-absolute end-0 top-0'>
+                                <i class="bi bi-x fs-4 cursor-pointer" onClick={handleClick}></i>
+                            </span>
+                        </Col>
 
+
+                    </Col>
                 </Col>
-            </Col> */}
-            <Modal
+            )}
+
+
+            {/* <Modal
                 show={showPopup}
                 onHide={handleClose}
                 backdrop="static"
@@ -51,8 +58,7 @@ const KumarkomHomePopup = () => {
 
 
                 <Modal.Body>
-                    {/* Replace 'your-image-path.jpg' with the path to your image */}
-                    {/* <Image src="/popup/kumarkom-popup/zuri_kumarkom_appreciation_letter.jpeg" alt="Popup Image" style={{ width: '100%' }} /> */}
+                    <Image src="/popup/kumarkom-popup/zuri_kumarkom_appreciation_letter.jpeg" alt="Popup Image" style={{ width: '100%' }} />
 
                     <p>
                         Our Banquet hall & Kick-start Gym will be closed for maintenance from 10th January to 20th January 2024. Thank you for your understanding.
@@ -71,8 +77,8 @@ const KumarkomHomePopup = () => {
                 </Col>
 
 
-            </Modal>
-        </div>
+            </Modal> */}
+        </>
     )
 }
 

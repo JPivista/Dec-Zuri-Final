@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { Col, Container, Image } from 'react-bootstrap'
 
@@ -20,7 +21,7 @@ const RoomsSuitsContent = () => {
                     </p>
 
                     <p>
-                        The Zuri five star deluxe Resort and <b>Spa in Kumarakom</b> offers 72 rooms which include 18 Zuri Rooms, 16 Zuri Deluxe Rooms, 28 Zuri Cottages and 10 Zuri Presidential Pool Villas, for a memorable stay.
+                        The Zuri five star deluxe Resort and <Link href='/lake-resorts-in-kumarakom/maya-spa/' target='_blank' className='text-decoration-none text-black fw-bold'>Spa in Kumarakom</Link> offers 72 rooms which include 18 Zuri Rooms, 16 Zuri Deluxe Rooms, 28 Zuri Cottages and 10 Zuri Presidential Pool Villas, for a memorable stay.
                     </p>
                     <p>
                         Our luxury rooms in Kumarakom are ideal for both leisure seekers and business travellers.

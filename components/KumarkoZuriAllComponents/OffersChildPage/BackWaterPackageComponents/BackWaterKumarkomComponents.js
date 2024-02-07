@@ -47,7 +47,7 @@ const BackWaterKumarkomComponents = () => {
 
     return (
         <>
-            <Container>
+            <Container className='mt-5'>
                 <div dangerouslySetInnerHTML={{ __html: pageContent }} />
             </Container>
         </>

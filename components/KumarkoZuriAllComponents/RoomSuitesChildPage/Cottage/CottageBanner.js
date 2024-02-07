@@ -24,18 +24,16 @@ const CottageBanner = () => {
                     <h6 className='mb-0 font12px'>Home</h6>
                 </Link>
 
-                /
 
                 <Link href="/lake-resorts-in-kumarakom"
                     className='text-decoration-none mb-0'>
-                    <h6 className='font12px mb-0 text-black'>Lake Resorts In Kumarakom</h6>
+                    <h6 className='font12px mb-0 text-black breadcrumbs'>Lake Resorts In Kumarakom</h6>
                 </Link>
 
-                /
 
                 <Link href=""
                     className='text-decoration-none mb-0'>
-                    <h6 className='text-custom-megenta font12px mb-0'>Rooms & Suites, Kerala</h6>
+                    <h6 className='text-custom-megenta font12px mb-0 breadcrumbs'>Rooms & Suites, Kerala</h6>
                 </Link>
             </Col>
 

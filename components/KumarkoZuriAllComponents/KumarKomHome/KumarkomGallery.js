@@ -58,17 +58,6 @@ const KumarkomGallery = () => {
         setLightboxIsOpen(false);
     };
 
-    const goToPrevious = () => {
-        setCurrentImage((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
-    };
-
-    const goToNext = () => {
-        setCurrentImage((prev) => (prev + 1) % galleryItems.length);
-    };
-
-
-
-
     return (
         <>
             <Container className='p-0 py-5'>
@@ -78,7 +67,7 @@ const KumarkomGallery = () => {
                 </Col>
 
 
-                <div className="masonry">
+                <div className="masonry px-lg-0 px-5">
                     {galleryItems.map((item, index) => (
                         <div key={index} onClick={() => openLightbox(index)}>
                             <Image src={item.src} alt={item.alt} />
@@ -88,21 +77,15 @@ const KumarkomGallery = () => {
 
                 {lightboxIsOpen && (
                     <div className="lightbox" onClick={closeLightbox}>
-                        {/* <button className="lightbox-button" onClick={() => goToPrevious()}>
-                            &lt; Prev
-                        </button> */}
                         <div className="lightbox-content">
                             <Image src={galleryItems[currentImage].src} alt={galleryItems[currentImage].alt} />
                         </div>
-                        {/* <button className="lightbox-button" onClick={() => goToNext()}>
-                            Next &gt;
-                        </button> */}
                     </div>
                 )}
 
 
 
-                <Col className='d-flex flex-column align-items-center py-4'>
+                <Col className='d-flex flex-column align-items-center py-4 p-2'>
                     <Col md={6} >
                         <Image src='/kumarkom/kumarkom-home/Gallery/zuri_hotel_fssai_certificate.jpeg' alt='' fluid />
                     </Col>

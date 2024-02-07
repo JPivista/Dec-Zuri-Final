@@ -48,7 +48,7 @@ const GetAwayKumarkomComponents = () => {
 
     return (
         <>
-            <Container>
+            <Container className='mt-5 overflow-x-hidden'>
                 <div dangerouslySetInnerHTML={{ __html: pageContent }} />
             </Container>
         </>

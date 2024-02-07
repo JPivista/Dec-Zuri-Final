@@ -65,7 +65,7 @@ const SharedSliderMayaSpaKumarkom = () => {
                     <Image src='/cl.png' alt='' fluid />
                     <h6 className='py-2 pt-4 text-center'>TREATMENTS & THERAPIES</h6>
 
-                    <Carousel className='d-md-none d-block'
+                    <Carousel className=''
                         responsive={responsive}
                         removeArrowOnDeviceType={["tablet", "desktop"]}
                         swipeable={false}

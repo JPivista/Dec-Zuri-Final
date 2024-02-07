@@ -13,7 +13,8 @@ const DesktopHeaderForm = ({ onClose }) => {
     ];
 
     const HotelReservationForm = () => {
-        const [selectedHotel, setSelectedHotel] = useState('');
+        const defaultSelectedHotel = '64786'; // Set the default selected hotel value
+        const [selectedHotel, setSelectedHotel] = useState(defaultSelectedHotel);
         const [selectedCheckInDate, setSelectedCheckInDate] = useState(getTodayDateString());
         const [selectedCheckOutDate, setSelectedCheckOutDate] = useState(getTodayDateString());
         const [selectedRooms, setSelectedRooms] = useState(1);
@@ -21,11 +22,20 @@ const DesktopHeaderForm = ({ onClose }) => {
         const [selectedChildren, setSelectedChildren] = useState(0);
         const [selectedChain, setSelectedChain] = useState('');
 
+        const [hotelValidationError, setHotelValidationError] = useState(false); // Track validation error
 
 
 
         const handleFormSubmit = (e) => {
             e.preventDefault();
+
+            if (!selectedHotel) {
+                // Display an error message or take appropriate action
+                // alert('Please select a hotel before submitting the form.');
+                setHotelValidationError(true);
+                return;
+            }
+
             // Handle form submission logic here, e.g., send data to backend
             console.log('Form submitted:', {
                 selectedHotel,
@@ -49,12 +59,13 @@ const DesktopHeaderForm = ({ onClose }) => {
             }
 
 
-
             // Construct the URL based on form data
             const reservationURL = `https://be.synxis.com/?adult=${selectedAdults}&arrive=${selectedCheckInDate}&chain=${selectedChain}&child=${selectedChildren}&currency=INR&depart=${selectedCheckOutDate}&hotel=${selectedHotel}&level=hotel&locale=en-US&rooms=${selectedRooms}`;
-            console.log(reservationURL)
+            // console.log(reservationURL)
             // Navigate to the reservation URL
             router.push(reservationURL);
+            setHotelValidationError(false);
+
         };
 
         function getTodayDateString() {
@@ -110,14 +121,20 @@ const DesktopHeaderForm = ({ onClose }) => {
                                         id="hotel"
                                         value={selectedHotel}
                                         onChange={(e) => setSelectedHotel(e.target.value)}
+                                        required
+                                        style={{ borderColor: hotelValidationError ? 'red' : '' }}
+
                                     >
-                                        <option value="">Select a hotel</option>
+                                        <option value="64786">Select a hotel</option>
                                         {hotels.map((hotel) => (
                                             <option key={hotel.id} value={hotel.value}>
                                                 {hotel.name}
                                             </option>
                                         ))}
                                     </select>
+                                    {!selectedHotel && (
+                                        <p style={{ color: 'red', fontSize: '12px' }}>Please select a hotel</p>
+                                    )}
                                 </div>
                             </div>
 
@@ -232,8 +249,25 @@ const DesktopHeaderForm = ({ onClose }) => {
 
                             <div className='d-flex flex-column gap-4'>
                                 <div className='text-center d-flex flex-column gap-2'>
-                                    <Button onClick={handleFormSubmit}>Book Now</Button>
+                                    <Button onClick={handleFormSubmit}
+                                        className='text-decoration-none text-white px-2 py-2 d-inline-block border-0 rounded-0'
+                                        style={{ background: 'purple' }}
+                                    >
+                                        Book Now
+                                    </Button>
                                 </div>
+
+                                <Link
+                                    href="https://be.synxis.com/?_ga=2.164956023.936920120.1702967799-2038087003.1664255723&adult=1&arrive=2023-12-20&chain=17869&child=0&currency=INR&depart=2023-12-21&hotel=64786&level=hotel&locale=en-US&rooms=1&shell=GCF&start=searchres&template=GCF"
+                                    className="text-deocoration-black"
+                                    target='_blank'
+                                >
+                                    <p
+                                        className='text-black font12px'
+                                    >
+                                        Modify / Cancel Reservation
+                                    </p>
+                                </Link>
                             </div>
                         </div>
                     </form>

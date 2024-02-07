@@ -5,7 +5,7 @@ import { Button, Col, Container } from 'react-bootstrap'
 const HoneyMoonContent = () => {
     return (
         <>
-            <Container className='p-md-0 py-md-5 p-2'>
+            <Container className='pt-md-5 p-2'>
 
                 <Col className='text-center'>
                     <h6 className='text-decoration-underline text-black'>HONEYMOON PACKAGE</h6>

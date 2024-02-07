@@ -22,9 +22,14 @@ p {
 .purple-clr{
     color: #c06da2 !important;
 }
+
  
 .bg-purple {
-    background: #c06da2;
+    background: #800080 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 .custom-kumarkom-menu-container {
@@ -55,8 +60,6 @@ p {
         padding-top: 30px !important;
     }
 }
-
-
 
 .font11px {
     font-size: 11px !important;
@@ -96,6 +99,12 @@ color: #913065;
 
 .text-custom-grey {
     color: #6d6e71;
+}
+
+.breadcrumbs:before {
+    padding: 4px;
+    color: #000; 
+    content: "/";
 }
 
 .kumarkom-active-menu {
@@ -826,6 +835,13 @@ ul.features-list-offer {
     outline: none;
   }
   
+
+  /* Maya-Spa ayurveda */
+
+  .custom-mayaspa-box {
+    box-shadow: -1px 0 1px -1px silver;
+    height: 329px;
+  }
   
   /* Responsive grid layout based on image sizes */
   @media (min-width: 768px) {

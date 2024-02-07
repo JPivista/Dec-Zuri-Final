@@ -10,7 +10,7 @@ const AyurvedaPackageBanner = () => {
     }
 
     return (
-        <Container className='p-0 w-100  py-5 custom-kumarkom-menu-container' style={{}}>
+        <Container className='custom-kumarkom-menu-container' style={{}}>
 
             <Col className='text-center pb-3'>
                 <h3 className='text-custom-grey'>AYURVEDA PACKAGE</h3>

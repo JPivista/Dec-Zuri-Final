@@ -38,8 +38,7 @@ const DesktopHeader = () => {
 
     return (
         <>
-            <Container fluid className='position-fixed d-lg-flex flex-column d-none border-bottom bg-white z-3 p-0' >
-
+            <Container fluid className='position-fixed d-lg-flex flex-column d-none border-bottom bg-white z-3 p-0'>
                 <Container fluid className='z-3 bg-white m-0' style={{ zIndex: '100' }} >
                     <Container className='p-0'>
                         <Row>

@@ -21,18 +21,16 @@ const HomeHeroBanner = () => {
                         width="100%"
                     />
 
-                    <Col className='d-flex flex-row align-items-center'>
+                    <Col className='d-flex flex-row align-items-center pt-1'>
 
                         <Link href="/"
                             className='text-decoration-none text-black m-0'>
                             <h6 className='mb-0 font12px'>Home</h6>
                         </Link>
 
-                        &nbsp; / &nbsp;
-
                         <Link href=""
                             className='text-decoration-none mb-0'>
-                            <h6 className='text-custom-megenta font12px m-0'>Lake Resorts In Kumarakom</h6>
+                            <h6 className='text-custom-megenta font12px m-0 breadcrumbs'>Lake Resorts In Kumarakom</h6>
                         </Link>
                     </Col>
                 </Col>
