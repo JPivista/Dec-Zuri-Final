@@ -10,9 +10,19 @@ import Footer from '../../../Shared/Footer'
 
 import '../../../StyledComponents'
 
+import Seo from '../../../SeoComponents/Seo'
+
+
+const title = "Executive Suites in Goa - Zuri Hotels & Resorts";
+const description = "Revel in a luxurious dose of the perfect Goan beach, the Varca beach. The Zuri Executive Suites are as just as luxurious and come with irresistible comforts.";
+const path = "https://www.thezurihotels.com/beach-resorts-in-goa/rooms-suites/executive-suite/";
+const metaImage = "/zuri_logo_social_media.png";
+
 const index = () => {
-  return (
-    <>
+    return (
+        <>
+
+            <Seo title={title} description={description} path={path} metaImage={metaImage} />
       <Header />
       <SharedRoomSuitesGoaHeader />
       <ExecutiveSuiteRoomGoaBanner />

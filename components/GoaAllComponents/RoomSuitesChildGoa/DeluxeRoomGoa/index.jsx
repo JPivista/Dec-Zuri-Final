@@ -10,9 +10,19 @@ import Footer from '../../../Shared/Footer'
 
 import '../../../StyledComponents'
 
+import Seo from '../../../SeoComponents/Seo'
+
+
+const title = "Deluxe Room in Goa Near Varca Beach - Zuri Hotels & Resorts";
+const description = "Experience the spirit of Goa on the most serene beach in Goa, the Varca beach. Zuri's Deluxe Room in south Goa is just at breathtaking as the views from it.";
+const path = "https://www.thezurihotels.com/beach-resorts-in-goa/rooms-suites/deluxe-room/";
+const metaImage = "/zuri_logo_social_media.png";
+
 const index = () => {
-  return (
-    <>
+    return (
+        <>
+
+      <Seo title={title} description={description} path={path} metaImage={metaImage} />
       <Header />
       <SharedRoomSuitesGoaHeader />
       <DeluxeRoomGoaBanner />
