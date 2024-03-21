@@ -16,6 +16,8 @@ export default function RootLayout({ children }) {
       </Head>
       <body>
         {children}
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"></link>
 
         {/* Start Google Analytics Manager */}
         <Script
