@@ -361,18 +361,20 @@ const DesktopHeader = () => {
                                     <Col lg={3} key={result.id} className='p-0 shadow-sm d-flex flex-column align-items-stretch'>
                                         <Col className='p-1'>
                                             <Col>
-                                                <Image
-                                                    src={result.acf.image_for_post.url}
-                                                    alt={result.title.rendered}
-                                                    fluid
-                                                    className='search-img'
-                                                />
+                                                <Link href={`/blog/${result.slug}`} className=' text-decoration-none text-black' >
+                                                    <Image
+                                                        src={result.acf.image_for_post.url}
+                                                        alt={result.title.rendered}
+                                                        fluid
+                                                        className='search-img'
+                                                    />
+                                                </Link>
                                             </Col>
 
                                             <Col className='search-txt mt-2'>
-                                                <Link href={`/blog/${result.slug}`} className=' text-decoration-none text-black' target='_blacnk'>
-                                                    {/* <div className='search-result'>{result.title.rendered}</div> */}
-
+                                                <Link href={`/blog/${result.slug}`} className=' text-decoration-none text-black'
+                                                // target='_blank'
+                                                >
                                                     <h6 className='text-black text-2line' dangerouslySetInnerHTML={{ __html: result.title.rendered }} />
                                                 </Link>
                                             </Col>

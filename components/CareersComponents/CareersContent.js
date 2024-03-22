@@ -15,7 +15,7 @@ const CareersContent = () => {
 
                 <Col className='text-center'>
                     <p>
-                        The Zuri Brand is undoubtedly a powerful, bold and dynamic brand, on a robust growth curve. While the hospitality dynamics are changing, The Zuri brand is keeping pace in meeting the expectations of both internal and external customers./
+                        The Zuri Brand is undoubtedly a powerful, bold and dynamic brand, on a robust growth curve. While the hospitality dynamics are changing, The Zuri brand is keeping pace in meeting the expectations of both internal and external customers.
                     </p>
 
                     <p>

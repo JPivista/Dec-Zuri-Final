@@ -151,12 +151,17 @@ const BlogContentWordpress = () => {
                                     <Row key={post.id}
                                     >
                                         <Col>
-                                            < Image
-                                                src={post['acf']['list_page_image']['url']}
-                                                alt={post.title.rendered}
-                                                fluid
-                                                width="100%"
-                                            />
+                                            <Link
+                                                href={`/blog/${post.slug}`}
+                                                className='text-decoration-none'
+                                            >
+                                                <Image
+                                                    src={post['acf']['list_page_image']['url']}
+                                                    alt={post.title.rendered}
+                                                    fluid
+                                                    width="100%"
+                                                />
+                                            </Link>
                                         </Col>
 
                                         <Col className='p-2 d-flex flex-column justify-content-between align-ite'>
@@ -172,11 +177,16 @@ const BlogContentWordpress = () => {
                                                     }
                                                 </p>
 
-                                                <p
-                                                    className='font19px text-purple text-uppercase'
+                                                <Link
+                                                    href={`/blog/${post.slug}`}
+                                                    className='text-decoration-none'
                                                 >
-                                                    {post.title.rendered}
-                                                </p>
+                                                    <p
+                                                        className='font19px text-purple text-uppercase'
+                                                    >
+                                                        {post.title.rendered}
+                                                    </p>
+                                                </Link>
                                                 <p
                                                     className="post-content font15px"
                                                     dangerouslySetInnerHTML={{ __html: post.content.rendered }}

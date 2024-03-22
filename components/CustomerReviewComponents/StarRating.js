@@ -75,10 +75,12 @@ const ReviewList = ({ reviews }) => {
                                     <Col>
                                         <Row>
                                             <Col>
-                                                <p className='mb-0'>
+                                                <p className='mb-0 text-black'>
                                                     {review.name}
                                                 </p>
-                                                <p>{review.date}</p>
+                                                <p className='text-black'>
+                                                    {review.date}
+                                                </p>
                                             </Col>
                                             <Col className='d-flex  justify-content-end'>
                                                 <div >

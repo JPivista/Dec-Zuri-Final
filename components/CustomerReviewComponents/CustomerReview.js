@@ -9,8 +9,7 @@ const CustomerReview = () => {
             <h3 className='text-center py-md-4 text-custom-grey'>REVIEWS FROM OUR ESTEEMED GUESTS</h3>
             <ReviewList reviews={review} />
         </Container>
-
     )
 }
 
-export default CustomerReview
+export default CustomerReview 

@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Image } from 'react-bootstrap';
+import { Col, Container, Image, Row } from 'react-bootstrap';
 
 import config from '../../../config'
 
@@ -17,7 +17,7 @@ const Posts = ({ slug }) => {
         let result = await fetch(URL_Fetchpost);
         result = await result.json();
         setData(result);
-        console.log(result);
+        // console.log(result);
     }
     useEffect(() => {
         FetchPost();
@@ -30,58 +30,59 @@ const Posts = ({ slug }) => {
 
     return (
         <>
+            <style>
+                {`
+                    div h2 {
+                        color: #767676;;
+                    }
 
+                    a strong {
+                        color: black;
+                    }
+
+                    a {
+                        text-decoration: none;
+                    }
+                `}
+            </style>
             <Container className='custom-kumarkom-menu-container'>
-                <Col md={8} className='d-flex flex-column gap-2'>
-
+                <Row>
                     {data.map((items) => (
-                        <div key={items.id}>
-                            <Image
-                                src={items.acf.image_for_post.url}
-                                alt={items.title.rendered} fluid
-                            />
+                        <Col key={items.id}>
+                            <h2 className='text-uppercase text-center py-4' dangerouslySetInnerHTML={{ __html: items.title.rendered }} />
+                            <Row>
+                                <Col lg={8}>
+                                    <Image
+                                        src={items.acf.image_for_post.url}
+                                        alt={items.title.rendered} fluid
+                                    />
 
-                            <p
-                                style={{ fontSize: '11px !important', color: '#126634' }}
-                            >
-                                <Link
-                                    href="/"
-                                    className='text-decoration-none text-black'
-                                >
-                                    Home
-                                </Link> / {formatPublishedDate(items.date)}
-                            </p>
+                                    <p
+                                        style={{ fontSize: '11px !important', color: '#126634' }}
+                                    >
+                                        <Link
+                                            href="/"
+                                            className='text-decoration-none text-black'
+                                        >
+                                            Home
+                                        </Link> / {formatPublishedDate(items.date)}
+                                    </p>
 
-                            <div
-                                className='py-2'
-                                style={{ color: '#913065' }}
-                            >
-                                <h4 dangerouslySetInnerHTML={{ __html: items.title.rendered }} />
-                            </div>
+                                    <div
+                                        className='py-2'
+                                        style={{ color: '#913065' }}
+                                    >
+                                        <h4 className='text-uppercase' dangerouslySetInnerHTML={{ __html: items.title.rendered }} />
+                                    </div>
 
-
-                            {/* <p dangerouslySetInnerHTML={{ __html: items.content.rendered }} /> */}
-                            {/* <div dangerouslySetInnerHTML={{ __html: items.content.rendered.replace(/http:\/\/localhost:3000/g, config.apiDomain) }} /> */}
-                            <div dangerouslySetInnerHTML={{ __html: items.content.rendered }} />
-
-                            <style>
-                                {`
-                                div h2 {
-                                    color: #767676;;
-                                }
-
-                                a strong {
-                                    color: black;
-                                }
-
-                                a {
-                                    text-decoration: none;
-                                }
-                            `}
-                            </style>
-                        </div>
+                                    {/* <p dangerouslySetInnerHTML={{ __html: items.content.rendered }} /> */}
+                                    {/* <div dangerouslySetInnerHTML={{ __html: items.content.rendered.replace(/http:\/\/localhost:3000/g, config.apiDomain) }} /> */}
+                                    <div dangerouslySetInnerHTML={{ __html: items.content.rendered }} />
+                                </Col>
+                            </Row>
+                        </Col>
                     ))}
-                </Col>
+                </Row>
 
             </Container>
         </>
