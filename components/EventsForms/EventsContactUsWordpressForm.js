@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { RotatingLines } from 'react-loader-spinner';
 
 import configData from '../../config';
+import countries from '../ContactUsComponents/CountyList';
 
 
 const EventsContactUsWordpressForm = () => {
@@ -39,11 +40,6 @@ const EventsContactUsWordpressForm = () => {
     const [success, setSuccess] = useState(true);
     const [error, setError] = useState(false);
 
-
-
-
-
-
     const siteUrl = configData.apiUrl;
 
     const handleSubmit = event => {
@@ -53,7 +49,7 @@ const EventsContactUsWordpressForm = () => {
 
     function createPost() {
         setSpinner(true);
-        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7334/feedback`,
+        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7338/feedback`,
             {
                 'your-name': { yourName },
                 'your-phone': { yourPhone },
@@ -74,6 +70,7 @@ const EventsContactUsWordpressForm = () => {
                 setPost(response.data.message);
                 // setErrMessage(response.data['invalid_fields'][1]['message']);
                 const msg = response.data.status;
+                console.log(response.data)
                 if (msg == 'mail_sent') {
                     setLoading(true);
                     setSpinner(false);
@@ -95,12 +92,23 @@ const EventsContactUsWordpressForm = () => {
                     //setLoading(true);
                     setError(true);
                 }
-                console.log(response.data)
+                // console.log(response.data)
             });
     }
 
     return (
         <Col className='p-0 w-100'>
+
+            <style>
+                {
+                    `
+                    h1.reg-success.mt-4 {
+                        text-align: center;
+                        color: purple;
+                    }
+                    `
+                }
+            </style>
             <Col className=''>
                 {success &&
                     <form
@@ -212,8 +220,11 @@ const EventsContactUsWordpressForm = () => {
                                         <option value='' disable>
                                             Select Country
                                         </option>
-                                        <option value='india'>India</option>
-                                        <option value='usa'>USA</option>
+                                        {countries.map((country, index) => (
+                                            <option key={index} value={country.code}>
+                                                {country.name}
+                                            </option>
+                                        ))}
                                     </select>
                                     <div className='select-icon'>&#9660;</div>
                                 </div>

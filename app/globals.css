@@ -32,6 +32,10 @@ p {
     padding-top: 150px;
 }
 
+.vh-50 {
+    max-height:50vh;
+}
+
 @media(max-width:767px) {
     .container {
         width: 100% !important;
@@ -863,6 +867,26 @@ ul.features-list-offer {
   .custom-mayaspa-box {
     box-shadow: -1px 0 1px -1px silver;
     height: 329px;
+  }
+
+  /* .search-txt.col {
+    max-height: 41px;
+    overflow: hidden;
+} */
+
+.search-img {
+    height: 100%;
+}
+
+.text-2line {
+    /* Enable text overflow with ellipsis */
+    text-overflow: ellipsis;
+    /* Display the ellipsis at the end */
+    overflow: hidden;
+    /* Enable multi-line display */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines to display */
+    -webkit-box-orient: vertical;
   }
   
   /* Responsive grid layout based on image sizes */

@@ -35,7 +35,7 @@ const ContactUsTap = () => {
                     <div onClick={handleOnclikEvent}
                         className='text-center'
                     >
-                        <p className='pb-2 text-center font12px'
+                        <p className='pb-2 text-center font12px cursor-pointer'
                             style={{
                                 borderBottom: isOnclickShow ? '2px solid #8b3f88' : '0px',
                                 color: isOnclickShow ? '#8b3f88' : 'black'
@@ -48,9 +48,8 @@ const ContactUsTap = () => {
                     <div
                         onClick={handleOnclikEvent1}
                         className='text-center'
-
                     >
-                        <p className='pb-2 text-center font12px'
+                        <p className='pb-2 text-center font12px cursor-pointer'
                             style={{
                                 borderBottom: isOnclickShow1 ? '2px solid #8b3f88' : '0px',
                                 color: isOnclickShow1 ? '#8b3f88' : 'black'
@@ -63,9 +62,8 @@ const ContactUsTap = () => {
                     <div
                         onClick={handleOnclikEvent2}
                         className='text-center'
-
                     >
-                        <p className='pb-2 text-center font12px'
+                        <p className='pb-2 text-center font12px cursor-pointer'
                             style={{
                                 borderBottom: isOnclickShow2 ? '2px solid #8b3f88' : '0px',
                                 color: isOnclickShow2 ? '#8b3f88' : 'black'
@@ -80,7 +78,7 @@ const ContactUsTap = () => {
                 {isOnclickShow && (
                     <Col className='mt-4'>
                         <Col>
-                            <Row>
+                            <Row className='d-flex flex-lg-row flex-column'>
                                 <Col className='text-center'>
                                     <p className='purple-clr'>
                                         THE ZURI WHITEFIELD, BENGALURU <br /> <br />

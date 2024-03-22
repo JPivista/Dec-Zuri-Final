@@ -54,7 +54,6 @@ const DesktopHeader = () => {
 
     return (
         <>
-
             <style>
                 {
                     `
@@ -64,7 +63,8 @@ const DesktopHeader = () => {
 
                 button.d-inline-block.bg-transparent.border-0.cusrom-make-reservation-icon {
                     margin-right: 13px;
-                }
+                    box-shadow: none !important;
+                }         
             `
                 }
             </style>
@@ -353,13 +353,34 @@ const DesktopHeader = () => {
 
 
                 {/* Conditionally render search results */}
-                {searchResults.length > 0 && (
-                    <Container className='search-results'>
-                        {searchResults.map((result) => (
-                            <Link href={`/post/${result.id}`} key={result.id}>
-                                <div className='search-result'>{result.title.rendered}</div>
-                            </Link>
-                        ))}
+                {searchTerm && searchResults.length > 0 && (
+                    <Container fluid className='search-results py-4 vh-50 overflow-scroll  shadow-lg'>
+                        <Container>
+                            <Row className='d-flex flex-lg-row flex-column'>
+                                {searchResults.map((result) => (
+                                    <Col lg={3} key={result.id} className='p-0 shadow-sm d-flex flex-column align-items-stretch'>
+                                        <Col className='p-1'>
+                                            <Col>
+                                                <Image
+                                                    src={result.acf.image_for_post.url}
+                                                    alt={result.title.rendered}
+                                                    fluid
+                                                    className='search-img'
+                                                />
+                                            </Col>
+
+                                            <Col className='search-txt mt-2'>
+                                                <Link href={`/blog/${result.slug}`} className=' text-decoration-none text-black' target='_blacnk'>
+                                                    {/* <div className='search-result'>{result.title.rendered}</div> */}
+
+                                                    <h6 className='text-black text-2line' dangerouslySetInnerHTML={{ __html: result.title.rendered }} />
+                                                </Link>
+                                            </Col>
+                                        </Col>
+                                    </Col>
+                                ))}
+                            </Row>
+                        </Container>
                     </Container>
                 )}
 
@@ -372,6 +393,7 @@ const DesktopHeader = () => {
                 )}
 
             </Container >
+
         </>
     )
 }

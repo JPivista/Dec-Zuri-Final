@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import countries from './CountyList';
 
 import configData from '../../config';
@@ -40,7 +40,7 @@ const ContactWordpressFeedbackForm = () => {
 
     function createPost() {
         setSpinner(true);
-        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7333/feedback`,
+        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7341/feedback`,
             {
                 'your-name': { yourName },
                 'your-email': { yourEmail },
@@ -56,18 +56,19 @@ const ContactWordpressFeedbackForm = () => {
             }
         })
             .then((response) => {
-                setPost(response.data.message);
+                // setPost(response.data.message);
                 // setErrMessage(response.data['invalid_fields'][1]['message']);
                 const msg = response.data.status;
                 if (msg == 'mail_sent') {
                     setLoading(true);
                     setSpinner(false);
                     setSuccess(false);
+                    setShowModal(true); // Set showModal to true here
                     setError(false);
                 }
                 else {
-                    setErrName(response.data['invalid_fields'][0]['message']);
-                    setErrEmail(response.data['invalid_fields'][1]['message']);
+                    setErrName('Please enter your name');
+                    setErrEmail('Please enter valid email');
                     // setErrSubject(response.data['invalid_fields'][2]['message']);
                     setErrCountry('Please select a country');
                     setErrPhone('Enter your contact number');
@@ -76,9 +77,16 @@ const ContactWordpressFeedbackForm = () => {
                     //setLoading(true);
                     setError(true);
                 }
-                console.log(response.data)
+                // console.log(response.data)
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                setSpinner(false);
+                setError(true);
             });
     }
+
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <Container className='p-0 py-5'>
@@ -105,7 +113,6 @@ const ContactWordpressFeedbackForm = () => {
                                 />
                             </Col>
 
-
                             <Col md={6} className='py-md-4'>
                                 <input
                                     required
@@ -125,7 +132,7 @@ const ContactWordpressFeedbackForm = () => {
                                 <input
                                     required
                                     type='email'
-                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                    // pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                     className="form-control"
                                     id="yourEmail"
                                     name='yourEmail'
@@ -143,7 +150,7 @@ const ContactWordpressFeedbackForm = () => {
                                 <input
                                     required
                                     type='tel'
-                                    pattern="^[0-9+\s()-]*$"  // Allow digits, plus sign, space, hyphen, and parentheses
+                                    // pattern="^[0-9+\s()-]*$"  // Allow digits, plus sign, space, hyphen, and parentheses
                                     className="form-control"
                                     id="yourPhone"
                                     name='yourPhone'
@@ -246,6 +253,18 @@ const ContactWordpressFeedbackForm = () => {
                 {loading && <h1 class="reg-success mt-4">{post}</h1>}
                 {/* {error && <h1 class="reg-error mt-4">{post}</h1>} */}
             </Col>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thank You!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Your message has been sent successfully.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)} className='bg-purple'>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </Container >
     );
 };

@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 
 import countries from '../ContactUsComponents/CountyList';
 
 import configData from '../../config'
+import axios from 'axios';
 
 const CareerForm = () => {
     const [post, setPost] = useState(null);
@@ -31,6 +32,7 @@ const CareerForm = () => {
     const [directedToError, setDirectedToError] = useState(null);
 
     const [yourPlace, setPlace] = useState(null);
+    const [errrPlace, setErrrPlace] = useState(null);
 
     const siteUrl = configData.apiUrl;
 
@@ -41,33 +43,33 @@ const CareerForm = () => {
 
     function createPost() {
         setSpinner(true);
-        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7333/feedback`,
+        axios.post(`${siteUrl}wp-json/contact-form-7/v1/contact-forms/7340/feedback`,
             {
                 'your-name': { yourName },
                 'your-email': { yourEmail },
                 'your-position': { yourPosition },
                 'your-message': { yourMessage },
                 'your-phone': { yourPhone },
+                'your-locations': { yourPlace },
                 'your-country': { yourCountry },
-                'your-place': { yourPlace },
-                'your-direct': { directedTo }
             }, {
             headers: {
                 "Content-Type": 'multipart/form-data',
             }
         })
             .then((response) => {
-                setPost(response.data.message);
+                // setPost(response.data.message);
                 // setErrMessage(response.data['invalid_fields'][1]['message']);
                 const msg = response.data.status;
                 if (msg == 'mail_sent') {
                     setLoading(true);
                     setSpinner(false);
                     setSuccess(false);
+                    setShowModal(true); // Set showModal to true here
                     setError(false);
                 }
                 else {
-                    setErrName(response.data['invalid_fields'][0]['message']);
+                    setErrName('Please enter your name');
                     setErrEmail(response.data['invalid_fields'][1]['message']);
                     // setErrSubject(response.data['invalid_fields'][2]['message']);
                     setErrCountry('Please select a country');
@@ -75,12 +77,21 @@ const CareerForm = () => {
                     setDirectedToError('Please select a DIRECTED TO');
                     setErrPosition('Enter your position')
                     setSpinner(false);
+                    setErrrPlace('Please select a place name')
                     //setLoading(true);
                     setError(true);
                 }
-                console.log(response.data)
+                // console.log(response.data)
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                setSpinner(false);
+                setError(true);
             });
     }
+
+    const [showModal, setShowModal] = useState(false);
+
 
     return (
         <Container className='p-0 py-5'>
@@ -125,7 +136,7 @@ const CareerForm = () => {
                                 <input
                                     required
                                     type='email'
-                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                                    // pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                     className="form-control"
                                     id="yourEmail"
                                     name='yourEmail'
@@ -149,14 +160,14 @@ const CareerForm = () => {
                                     value={yourName}
                                     onChange={event => setName(event.target.value)}
                                 />
-                                {!yourName && <span className="r_error">{errrPosition}</span>}
+                                {!yourName && <span className="r_error">{errrname}</span>}
                             </Col>
 
                             <Col md={6}>
                                 <input
                                     required
                                     type='tel'
-                                    pattern="^[0-9+\s()-]*$"  // Allow digits, plus sign, space, hyphen, and parentheses
+                                    // pattern="^[0-9+\s()-]*$"  // Allow digits, plus sign, space, hyphen, and parentheses
                                     className="form-control"
                                     id="yourPhone"
                                     name='yourPhone'
@@ -185,7 +196,7 @@ const CareerForm = () => {
                                     <option value='goa'>The Zuri White Sands, Goa Resort & Casino</option>
                                     <option value='kerala'>The Zuri Kumarakom, Kerala</option>
                                 </select>
-                                {!yourPlace && <span className='r_error'>{errrcountry}</span>}
+                                {!yourPlace && <span className='r_error'>{errrPlace}</span>}
                             </Col>
 
                             <Col md={6} className='py-md-4'>
@@ -218,7 +229,20 @@ const CareerForm = () => {
                 {loading && <h1 class="reg-success mt-4">{post}</h1>}
                 {/* {error && <h1 class="reg-error mt-4">{post}</h1>} */}
             </Col>
-        </Container >
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thank You!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Your message has been sent successfully.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)} className='bg-purple'>Close</Button>
+                </Modal.Footer>
+            </Modal>
+
+        </Container>
 
     )
 }
